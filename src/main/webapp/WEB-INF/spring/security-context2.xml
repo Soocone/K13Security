@@ -44,6 +44,7 @@
 			login-page="/security2/login.do"
 			default-target-url="/security2/index.do"
 			authentication-failure-url="/security2/login.do?error"
+			login-processing-url="/myLoginAction"
 			username-parameter="id"
 			password-parameter="pass"
 		/>

@@ -36,9 +36,16 @@
       security-context.xml에서 login-processing-url을 설정한 경우
       동일한 값으로 action 속성을 설정해야 한다.
       설정하지 않았다면 default값이 "/login"이므로 이와같이 설정한다.
+      
+      만약 해당 설정값을 추가했다면 컨텍스트 루트 경로를 제외한 나머지 경로를
+      통해 action 속성을 기술해야 한다.
        -->
-         <c:url value="/login" var="loginUrl" />
-         <form:form name="loginFrm" action="${loginUrl }" method="post">
+       <!-- 방법1] JSTL의 url 태그를 사용한 경우 컨텍스트 루트 경로가 자동으로 붙는다. -->
+         <c:url value="/myLoginAction" var="loginUrl" />
+         <!-- 앞에서 url 태그를 통해 설정한 값을 EL로 출력한다. -->
+         <%-- <form:form name="loginFrm" action="${loginUrl }" method="post"> --%>
+         <!-- 방법2] 하드코딩으로 아래와 같이 기술한다. -->
+         <form:form name="loginFrm" action="../myLoginAction" method="post">
             <!-- 
             시큐리티 설정에 authentication-failure-url="/security2/login.do?error"
             이와 같이 기술하였으므로 로그인에 실패한 경우는 아래와 같이 처리하면 된다.
